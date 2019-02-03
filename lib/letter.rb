@@ -5,4 +5,10 @@
 #
 class Letter
   attr_accessor :char, :x, :y
+
+  def initialize(char = '', x_corr = nil, y_corr = nil)
+    @char = char.upcase
+    @x = x_corr
+    @y = y_corr
+  end
 end
