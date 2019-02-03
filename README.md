@@ -10,4 +10,17 @@ See [Gemfile](Gemfile)
 
 ## Development
 
+Install packages:
+
+```bash
+$ bundle install
+```
+
+Run unit tests:
+
+```bash
+rake spec
+```
+
 ## Usage
+
