@@ -13,7 +13,7 @@ class Word
   end
 
   def parse
-    @parsed = @raw.split(//).collect do |char|
+    @parsed ||= @raw.split(//).collect do |char|
       Letter.new(char)
     end
     @parsed
