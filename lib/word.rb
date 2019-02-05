@@ -5,4 +5,8 @@
 #
 class Word
   attr_reader :raw
+
+  def initialize(word)
+    @raw = word
+  end
 end
