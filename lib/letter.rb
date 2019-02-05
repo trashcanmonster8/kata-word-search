@@ -6,7 +6,7 @@
 class Letter
   attr_reader :char, :x, :y
 
-  def initialize(char = '', x_corr = nil, y_corr = nil)
+  def initialize(char, x_corr = nil, y_corr = nil)
     @char = char.upcase
     @x = x_corr
     @y = y_corr

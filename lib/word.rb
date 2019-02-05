@@ -6,20 +6,18 @@ require 'letter'
 # Word class as a collection of Letters
 #
 class Word
-  attr_reader :raw
-
   def initialize(word)
     @raw = word
+    parse
   end
 
   def parse
-    @parsed ||= @raw.split(//).collect do |char|
+    @parse ||= @raw.split(//).collect do |char|
       Letter.new(char)
     end
-    @parsed
   end
 
   def [](index)
-    @parsed[index]
+    @parse[index]
   end
 end
