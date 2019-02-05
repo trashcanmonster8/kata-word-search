@@ -4,7 +4,8 @@
 # Letter in the word search
 #
 class Letter
-  attr_reader :char, :x, :y
+  attr_reader :char
+  attr_accessor :x, :y
 
   def initialize(char, x_corr = nil, y_corr = nil)
     @char = char.upcase
