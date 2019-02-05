@@ -13,6 +13,7 @@ RSpec.describe Word.new('test') do
   end
 
   it '#[]' do
+    described_class.parse
     expect(described_class[1]).to be_a Letter
   end
 end
