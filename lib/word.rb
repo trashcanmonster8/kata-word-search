@@ -18,4 +18,8 @@ class Word
     end
     @parsed
   end
+
+  def [](index)
+    @parsed[index]
+  end
 end

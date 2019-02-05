@@ -11,4 +11,8 @@ RSpec.describe Word.new('test') do
     expect(described_class.parse).to be_a Array
     expect(described_class.parse[0]).to be_a Letter
   end
+
+  it '#[]' do
+    expect(described_class[1]).to be_a Letter
+  end
 end
