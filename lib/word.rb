@@ -8,6 +8,7 @@ require 'letter'
 class Word
   def initialize(word)
     @raw = word
+    @found = false
     parse
   end
 
@@ -19,5 +20,14 @@ class Word
 
   def [](index)
     @parse[index]
+  end
+
+  def found?
+    @found
+  end
+
+  def found!
+    @found = true
+    @found
   end
 end
