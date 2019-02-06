@@ -7,7 +7,7 @@ RSpec.describe Puzzle.new do
     described_class.parse("C,B\nR,T")
     expected_letter = described_class[0][0]
     expect(expected_letter).to be_a Letter
-    expect(expected_letter.char).to be_a 'C'
+    expect(expected_letter.char).to eql 'C'
     expect(expected_letter.found?).to be_truthy
   end
 end

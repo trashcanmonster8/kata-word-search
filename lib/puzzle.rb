@@ -2,9 +2,9 @@
 
 require 'letter'
 
-# 
+#
 # Word search puzzle
-# 
+#
 class Puzzle
   def initialize
     @board
