@@ -8,7 +8,6 @@ require 'letter'
 class Word
   def initialize(word)
     @raw = word
-    @found = false
     parse
   end
 
@@ -23,11 +22,6 @@ class Word
   end
 
   def found?
-    @found
-  end
-
-  def found!
-    @found = true
-    @found
+    @parse.all?(&:found?)
   end
 end

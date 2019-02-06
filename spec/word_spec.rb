@@ -3,13 +3,8 @@
 require 'word'
 
 RSpec.describe Word.new('test') do
-  it '#found? reads :found' do
+  it '#found? is false if any letters are not found' do
     expect(described_class.found?).to eq false
-  end
-
-  it '#found! sets :found to true' do
-    described_class.found!
-    expect(described_class.found?).to eq true
   end
 
   it '#parse creates an array of Letters' do
@@ -26,5 +21,13 @@ RSpec.describe Word.new('test') do
     described_class.instance_variable_set(:@parse, [:bad_object])
     described_class.parse
     expect(described_class[0]).to eq :bad_object
+  end
+  
+  context Word.new('w') do
+    it '#found? is true if all letters are found' do
+      described_class[0].x = 1
+      described_class[0].y = 2
+      expect(described_class.found?).to eq true
+    end
   end
 end
