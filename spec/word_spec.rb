@@ -22,7 +22,7 @@ RSpec.describe Word.new('test') do
     described_class.parse
     expect(described_class[0]).to eq :bad_object
   end
-  
+
   context Word.new('w') do
     it '#found? is true if all letters are found' do
       described_class[0].x = 1
