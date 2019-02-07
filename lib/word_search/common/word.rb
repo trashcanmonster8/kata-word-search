@@ -26,6 +26,10 @@ module WordSearch
       def found?
         @parse.all?(&:found?)
       end
+
+      def ==(other)
+        @raw == other
+      end
     end
   end
 end

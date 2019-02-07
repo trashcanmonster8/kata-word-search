@@ -8,6 +8,10 @@ RSpec.describe WordSearch::Common::Word.new('test') do
     expect(described_class.found?).to eq false
   end
 
+  it '#== only compares @raw' do
+    expect(described_class).to eq 'test'
+  end
+
   it '#parse creates an array of Letters' do
     expect(described_class.parse).to be_a Array
     expect(described_class.parse[0]).to be_a WordSearch::Common::Letter
