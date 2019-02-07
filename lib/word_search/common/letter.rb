@@ -17,7 +17,7 @@ module WordSearch
       end
 
       def found?
-        @location[0] && @location[1]
+        @location.set?
       end
     end
   end
