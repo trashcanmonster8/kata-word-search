@@ -5,7 +5,7 @@ module WordSearch
     #
     # Stores coordinates on the puzzle
     #
-    class Coordinate
+    class Coordinates
       attr_reader :x, :y
 
       def initialize(*coordinates)
