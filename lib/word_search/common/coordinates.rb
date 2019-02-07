@@ -6,6 +6,8 @@ module WordSearch
     # Stores coordinates on the puzzle
     #
     class Coordinates
+      ORDER = (0..1)
+
       attr_reader :x, :y
 
       def initialize(*coordinates)
@@ -23,7 +25,11 @@ module WordSearch
       end
 
       def ==(other)
-        (0..1).all? { |i| self[i] == other[i] }
+        ORDER.all? { |i| self[i] == other[i] }
+      end
+
+      def set?
+        ORDER.none? { |i| self[i].nil? }
       end
     end
   end
