@@ -12,6 +12,15 @@ module WordSearch
         @x = coordinates[0]
         @y = coordinates[1]
       end
+
+      def [](index)
+        case index
+        when 0
+          @x
+        when 1
+          @y
+        end
+      end
     end
   end
 end

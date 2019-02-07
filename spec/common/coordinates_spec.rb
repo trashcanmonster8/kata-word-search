@@ -7,5 +7,10 @@ RSpec.describe WordSearch::Common::Coordinates.new do
 
   context WordSearch::Common::Coordinates.new(3, 4) do
     it { is_expected.to have_attributes x: 3, y: 4 }
+
+    it 'Returns coordinates like Array' do
+      expect(described_class[0]).to eq 3
+      expect(described_class[1]).to eq 4
+    end
   end
 end
