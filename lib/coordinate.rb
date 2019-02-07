@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Coordinate
-  attr_accessor :x, :y
+  attr_reader :x, :y
 
-  def initialize(x_corr = nil, y_corr = nil)
-    @x = x_corr
-    @y = y_corr
+  def initialize(*coordinates)
+    @x = coordinates[0]
+    @y = coordinates[1]
   end
 end

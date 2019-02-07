@@ -5,8 +5,7 @@ require 'coordinate'
 RSpec.describe Coordinate.new do
   it { is_expected.to have_attributes x: nil, y: nil }
 
-  it '#x=' do
-    described_class.x = 2
-    expect(described_class.x).to eql 2
+  context Coordinate.new(3, 4) do
+    it { is_expected.to have_attributes x: 3, y: 4 }
   end
 end
