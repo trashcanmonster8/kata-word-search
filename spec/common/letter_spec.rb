@@ -6,6 +6,10 @@ require 'word_search/common/letter'
 RSpec.describe WordSearch::Common::Letter.new('c') do
   it { is_expected.to have_attributes char: 'C' }
 
+  it '#== if char and coordinates are the same' do
+    expect(described_class).to eq WordSearch::Common::Letter.new('C')
+  end
+
   it '#found? is false if all coordinates are not set' do
     expect(described_class.found?).to be_falsey
   end
@@ -25,6 +29,10 @@ RSpec.describe WordSearch::Common::Letter.new('c') do
 
     it '#found? is true if corrdinates are set' do
       expect(described_class.found?).to be_truthy
+    end
+
+    it '#== if char and coordinates are the same' do
+      expect(described_class).to eq WordSearch::Common::Letter.new('C', 1, 2)
     end
   end
 end

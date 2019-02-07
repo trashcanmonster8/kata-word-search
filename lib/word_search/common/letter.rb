@@ -9,7 +9,7 @@ module WordSearch
     #
     class Letter
       attr_reader :char
-      attr_writer :location
+      attr_accessor :location
 
       def initialize(char, x_corr = nil, y_corr = nil)
         @char = char.upcase
@@ -18,6 +18,10 @@ module WordSearch
 
       def found?
         @location.set?
+      end
+
+      def ==(other)
+        @char == other.char && @location == other.location
       end
     end
   end
