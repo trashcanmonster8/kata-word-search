@@ -3,12 +3,18 @@
 require 'word_search/common/letter'
 require 'word_search/puzzle/board'
 
-RSpec.describe WordSearch::Puzzle::Board.new do
-  it '#parse converts formatted string to puzzle' do
-    described_class.parse("C,B\nR,T")
-    expected_letter = described_class[0][0]
-    expect(expected_letter).to be_a WordSearch::Common::Letter
-    expect(expected_letter.char).to eql 'C'
-    expect(expected_letter.found?).to be_truthy
+RSpec.describe WordSearch::Puzzle::Board do
+  EXPECTED_BOARD = [%w(C B), %w(R T)].freeze
+
+  before(:all) do
+    @test_obj = described_class.new("C,B\nR,T")
+  end
+
+  EXPECTED_BOARD.each_with_index do |row, j|
+    row.each_with_index do |char, i|
+      it "Creates the board with the correct letter at #{i} x #{j}" do
+        expect(@test_obj[j][i]).to eq WordSearch::Common::Letter.new(char, i, j)
+      end
+    end
   end
 end
