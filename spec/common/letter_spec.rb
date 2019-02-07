@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'letter'
+require 'word_search/common/letter'
 
-RSpec.describe Letter.new('c') do
+RSpec.describe WordSearch::Common::Letter.new('c') do
   it { is_expected.to have_attributes char: 'C' }
 
   it '#found? is false if all coordinates are not set' do
@@ -20,7 +20,7 @@ RSpec.describe Letter.new('c') do
     expect(described_class.found?).to be_truthy
   end
 
-  context Letter.new('C', 1, 2) do
+  context WordSearch::Common::Letter.new('C', 1, 2) do
     it { is_expected.to have_attributes char: 'C' }
 
     it '#found? is true if corrdinates are set' do
