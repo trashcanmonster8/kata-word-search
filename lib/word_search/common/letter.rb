@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'word_search/common/coordinates'
+
 module WordSearch
   module Common
     #
@@ -7,16 +9,15 @@ module WordSearch
     #
     class Letter
       attr_reader :char
-      attr_writer :x, :y
+      attr_writer :location
 
       def initialize(char, x_corr = nil, y_corr = nil)
         @char = char.upcase
-        @x = x_corr
-        @y = y_corr
+        @location = Coordinates.new(x_corr, y_corr)
       end
 
       def found?
-        @x && @y
+        @location[0] && @location[1]
       end
     end
   end

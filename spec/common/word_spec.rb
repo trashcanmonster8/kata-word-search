@@ -26,8 +26,7 @@ RSpec.describe WordSearch::Common::Word.new('test') do
 
   context WordSearch::Common::Word.new('w') do
     it '#found? is true if all letters are found' do
-      described_class[0].x = 1
-      described_class[0].y = 2
+      described_class[0].location = WordSearch::Common::Coordinates.new(3, 5)
       expect(described_class.found?).to eq true
     end
   end
