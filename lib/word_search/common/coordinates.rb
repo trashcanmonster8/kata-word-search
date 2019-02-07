@@ -6,7 +6,7 @@ module WordSearch
     # Stores coordinates on the puzzle
     #
     class Coordinates
-      ORDER = (0..1)
+      ORDER = (0..1).freeze
 
       attr_reader :x, :y
 

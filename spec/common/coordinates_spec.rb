@@ -25,7 +25,8 @@ RSpec.describe WordSearch::Common::Coordinates.new do
 
     it '#equal? is true if all coordinates are equal' do
       expect(described_class).to eq WordSearch::Common::Coordinates.new(3, 4)
-      expect(described_class).to_not eq WordSearch::Common::Coordinates.new(4, 3)
+      expect(described_class)
+        .to_not eq WordSearch::Common::Coordinates.new(4, 3)
     end
 
     it '@set? is true' do

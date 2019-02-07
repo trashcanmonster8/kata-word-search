@@ -4,7 +4,7 @@ require 'word_search/common/letter'
 require 'word_search/puzzle/board'
 
 RSpec.describe WordSearch::Puzzle::Board do
-  EXPECTED_BOARD = [%w(C B), %w(R T)].freeze
+  EXPECTED_BOARD = [%w[C B], %w[R T]].freeze
 
   before(:all) do
     @test_obj = described_class.new("C,B\nR,T")
