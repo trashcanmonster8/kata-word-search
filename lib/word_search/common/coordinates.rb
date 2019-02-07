@@ -21,6 +21,10 @@ module WordSearch
           @y
         end
       end
+
+      def ==(other)
+        (0..1).all? { |i| self[i] == other[i] }
+      end
     end
   end
 end

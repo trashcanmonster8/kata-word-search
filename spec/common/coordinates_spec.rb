@@ -12,5 +12,10 @@ RSpec.describe WordSearch::Common::Coordinates.new do
       expect(described_class[0]).to eq 3
       expect(described_class[1]).to eq 4
     end
+
+    it '#equal? is true if all coordinates are equal' do
+      expect(described_class).to eq WordSearch::Common::Coordinates.new(3, 4)
+      expect(described_class).to_not eq WordSearch::Common::Coordinates.new(4, 3)
+    end
   end
 end
