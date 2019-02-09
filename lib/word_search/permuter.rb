@@ -8,7 +8,7 @@ module WordSearch
 
         def initialize(line, modulus)
             @line = line
-            @moduleus = modulus
+            @modulus = modulus
             @permutations = []
         end
     end
