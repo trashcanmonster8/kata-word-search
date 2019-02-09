@@ -11,5 +11,9 @@ module WordSearch
             @modulus = modulus
             @permutations = []
         end
+
+        def permute
+            @line
+        end
     end
 end
