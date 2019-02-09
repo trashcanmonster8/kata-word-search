@@ -10,4 +10,12 @@ RSpec.describe WordSearch::Permuter do
   it '#permute sorts line into different possible permutations' do
     expect(subject.permute).to eq %w[a s d f]
   end
+
+  context 'modulus 2' do
+    subject { WordSearch::Permuter.new(%w[a s d f], 2) }
+
+    it '#permute sorts line into different possible permutations' do
+      expect(subject.permute).to eq %w[as df]
+    end
+  end
 end

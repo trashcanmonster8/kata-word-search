@@ -15,7 +15,12 @@ module WordSearch
     end
 
     def permute
-      @line
+      groups = @line.size / @modulus
+
+      (1..groups).each do |index|
+        @permutations[index - 1] = @line.shift(@modulus).join
+      end
+      @permutations
     end
   end
 end
