@@ -15,10 +15,14 @@ module WordSearch
     end
 
     def permute
-      groups = @line.size / @modulus
-
-      (1..groups).each do |index|
-        @permutations[index - 1] = @line.shift(@modulus).join
+      groups, shifts = @line.size.divmod(@modulus)
+      (0..shifts).each do |shift|
+        @permutations[shift] = []
+        line = @line.clone
+        line.shift(shift)
+        (1..groups).each do |index|
+          @permutations[shift][index - 1] = line.shift(@modulus).join
+        end
       end
       @permutations
     end
