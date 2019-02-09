@@ -16,12 +16,14 @@ module WordSearch
 
     def permute
       groups, shifts = @line.size.divmod(@modulus)
-      (0..shifts).each do |shift|
+      permutes = shifts.zero? ? @modulus : shifts
+      (0..(@modulus - permutes)).each do |shift|
         @permutations[shift] = []
         line = @line.clone
         line.shift(shift)
-        (1..groups).each do |index|
-          @permutations[shift][index - 1] = line.shift(@modulus).join
+        (0..(groups - 1)).each do |index|
+          next if line.size < @modulus
+          @permutations[shift][index] = line.shift(@modulus).join
         end
       end
       @permutations
