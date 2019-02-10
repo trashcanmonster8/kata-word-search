@@ -7,21 +7,19 @@ module WordSearch
   class Finder
     attr_reader :permutations
 
-    def initialize(line, word)
+    def initialize(line)
       @line = line
-      @modulus = word.size
-      @permutations = []
     end
 
-    def permute
-      groups = @line.size.div(@modulus)
-      @permutations = (0..(@modulus - 1)).collect do |shift|
+    def permute(modulus)
+      groups = @line.size.div(modulus)
+      (0..(modulus - 1)).collect do |shift|
         line = @line.clone
         line.shift(shift)
         (0..groups).collect do
-          next if line.size < @modulus
+          next if line.size < modulus
 
-          line.shift(@modulus).join
+          line.shift(modulus).join
         end.compact
       end
     end
