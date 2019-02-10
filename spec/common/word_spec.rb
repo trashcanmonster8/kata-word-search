@@ -12,6 +12,10 @@ RSpec.describe WordSearch::Common::Word.new('test') do
     expect(described_class).to eq 'test'
   end
 
+  it '#size give length of word' do
+    expect(described_class.size).to eq 4
+  end
+
   it '#parse creates an array of Letters' do
     expect(described_class.parse).to be_a Array
     expect(described_class.parse[0]).to be_a WordSearch::Common::Letter

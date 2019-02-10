@@ -30,6 +30,10 @@ module WordSearch
       def ==(other)
         @raw == other
       end
+
+      def size
+        @raw.size
+      end
     end
   end
 end
