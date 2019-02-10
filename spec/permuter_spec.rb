@@ -15,7 +15,7 @@ RSpec.describe WordSearch::Permuter do
     subject { WordSearch::Permuter.new(%w[a s d f], 2) }
 
     it '#permute sorts line into different possible permutations' do
-      expect(subject.permute).to eq [%w[as df]]
+      expect(subject.permute).to eq [%w[as df], ['sd']]
     end
   end
 
@@ -28,9 +28,16 @@ RSpec.describe WordSearch::Permuter do
 
     it '#permute modulo 3' do
       permuter = WordSearch::Permuter.new(%w[a b c d e f g h i j k l m], 3)
-      expect(permuter.permute).to eq([%w[abc def ghi jkl],
+      expect(permuter.permute).to eq [%w[abc def ghi jkl],
                                       %w[bcd efg hij klm],
-                                      %w[cde fgh ijk]])
+                                      %w[cde fgh ijk]]
+    end
+
+    it '#permute module 7' do
+      permuter = WordSearch::Permuter.new(%w[a b c d e f g h i j k l m], 7)
+      expect(permuter.permute).to match_array [%w[abcdefg], %w[bcdefgh], %w[cdefghi],
+                                      %w[defghij], %w[efghijk], %w[fghijkl],
+                                      %w[ghijklm]]
     end
   end
 end
