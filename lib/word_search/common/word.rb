@@ -8,7 +8,7 @@ module WordSearch
     # Word class as a collection of letters
     #
     class Word
-      def initialize(word)
+      def initialize(word = '')
         @raw = word
         parse
       end
@@ -33,6 +33,11 @@ module WordSearch
 
       def size
         @raw.size
+      end
+
+      def join(letters)
+        @parse = letters
+        @raw = letters.map(&:char).join
       end
     end
   end

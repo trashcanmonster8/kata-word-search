@@ -3,39 +3,53 @@
 require 'word_search/common/letter'
 require 'word_search/common/word'
 
-RSpec.describe WordSearch::Common::Word.new('test') do
+RSpec.describe WordSearch::Common::Word do
+  subject { WordSearch::Common::Word.new('test') }
+
   it '#found? is false if any letters are not found' do
-    expect(described_class.found?).to eq false
+    expect(subject.found?).to eq false
   end
 
   it '#== only compares @raw' do
-    expect(described_class).to eq 'test'
+    expect(subject).to eq 'test'
   end
 
   it '#size give length of word' do
-    expect(described_class.size).to eq 4
+    expect(subject.size).to eq 4
   end
 
   it '#parse creates an array of Letters' do
-    expect(described_class.parse).to be_a Array
-    expect(described_class.parse[0]).to be_a WordSearch::Common::Letter
+    expect(subject.parse).to be_a Array
+    expect(subject.parse[0]).to be_a WordSearch::Common::Letter
   end
 
   it '#[]' do
-    described_class.parse
-    expect(described_class[1]).to be_a WordSearch::Common::Letter
+    subject.parse
+    expect(subject[1]).to be_a WordSearch::Common::Letter
   end
 
   it '#parse does not overwrite changes to :parse' do
-    described_class.instance_variable_set(:@parse, [:bad_object])
-    described_class.parse
-    expect(described_class[0]).to eq :bad_object
+    subject.instance_variable_set(:@parse, [:bad_object])
+    subject.parse
+    expect(subject[0]).to eq :bad_object
   end
 
-  context WordSearch::Common::Word.new('w') do
+  context 'letter is given coordinates' do
+    subject { WordSearch::Common::Word.new('w') }
     it '#found? is true if all letters are found' do
-      described_class[0].location = WordSearch::Common::Coordinates.new(3, 5)
-      expect(described_class.found?).to eq true
+      subject[0].location = WordSearch::Common::Coordinates.new(3, 5)
+      expect(subject.found?).to eq true
+    end
+  end
+
+  context 'no paramters' do
+    let(:letters) { (0..3).collect { |i| WordSearch::Common::Letter.new((i + 97).chr, i, i + 1) } }
+    subject { WordSearch::Common::Word.new }
+
+    it '#join creates new word out of array of lines' do
+      subject.join(letters)
+      expect(subject).to eq 'ABCD'
+      expect(subject.found?).to be true
     end
   end
 end
