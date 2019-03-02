@@ -3,27 +3,32 @@
 require 'word_search/finder'
 
 RSpec.describe WordSearch::Finder do
-  subject { WordSearch::Finder.new(%w[a b c d e f g h i j k l m]) }
+  let(:line) { (0..13).collect { |i| WordSearch::Common::Letter.new((i + 97).chr, i, i + 1) } }
+  let(:word) { 'hi' }
+  subject { WordSearch::Finder.new(line) }
 
   it '#permute sorts line into different possible permutations' do
-    expect(subject.permute(1)).to eq [%w[a b c d e f g h i j k l m]]
+    expect(subject.permute(1)[0][10].first).to eq WordSearch::Common::Letter.new('k', 10, 11)
   end
 
   it '#permute modulo 2' do
-    expect(subject.permute(2)).to eq [%w[ab cd ef gh ij kl],
-                                      %w[bc de fg hi jk lm]]
+    expect(subject.permute(2)[0][2]).to eq [WordSearch::Common::Letter.new('e', 4, 5),
+                                            WordSearch::Common::Letter.new('f', 5, 6)]
   end
 
   it '#permute modulo 3' do
-    expect(subject.permute(3)).to eq [%w[abc def ghi jkl],
-                                      %w[bcd efg hij klm],
-                                      %w[cde fgh ijk]]
+    expect(subject.permute(3)[2][0]).to eq [WordSearch::Common::Letter.new('c', 2, 3),
+                                            WordSearch::Common::Letter.new('d', 3, 4),
+                                            WordSearch::Common::Letter.new('e', 4, 5)]
   end
 
   it '#permute module 7' do
-    expect(subject.permute(7)).to match_array [%w[abcdefg], %w[bcdefgh],
-                                               %w[cdefghi], %w[defghij],
-                                               %w[efghijk], %w[fghijkl],
-                                               %w[ghijklm]]
+    expect(subject.permute(7)[5][0]).to match_array [WordSearch::Common::Letter.new('f', 5, 6),
+                                                     WordSearch::Common::Letter.new('g', 6, 7),
+                                                     WordSearch::Common::Letter.new('h', 7, 8),
+                                                     WordSearch::Common::Letter.new('i', 8, 9),
+                                                     WordSearch::Common::Letter.new('j', 9, 10),
+                                                     WordSearch::Common::Letter.new('k', 10, 11),
+                                                     WordSearch::Common::Letter.new('l', 11, 12)]
   end
 end

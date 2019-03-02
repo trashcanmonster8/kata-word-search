@@ -19,7 +19,7 @@ module WordSearch
         (0..groups).collect do
           next if line.size < modulus
 
-          line.shift(modulus).join
+          line.shift(modulus)
         end.compact
       end
     end
