@@ -9,7 +9,7 @@ module WordSearch
     #
     class Word
       def initialize(word = '')
-        @raw = word
+        @raw = word.upcase
         parse
       end
 
