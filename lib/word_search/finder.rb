@@ -23,5 +23,18 @@ module WordSearch
         end.compact
       end
     end
+
+    def find(word)
+      permutations = permute(word.size)
+      found = nil
+      permutations.find do |set|
+        found = set.find do |letters|
+          possible_word = Common::Word.new
+          possible_word.join(letters)
+          possible_word == Common::Word.new(word)
+        end
+      end
+      found
+    end
   end
 end

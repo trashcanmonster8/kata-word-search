@@ -31,4 +31,9 @@ RSpec.describe WordSearch::Finder do
                                                      WordSearch::Common::Letter.new('k', 10, 11),
                                                      WordSearch::Common::Letter.new('l', 11, 12)]
   end
+
+  it '#finds word' do
+    expect(subject.find(word)).to eq [WordSearch::Common::Letter.new('h', 7, 8),
+                                      WordSearch::Common::Letter.new('i', 8, 9)]
+  end
 end
