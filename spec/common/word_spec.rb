@@ -10,8 +10,13 @@ RSpec.describe WordSearch::Common::Word do
     expect(subject.found?).to eq false
   end
 
+  it '#to_s prints @raw' do
+    expect(subject.to_s).to eq 'TEST'
+  end
+
   it '#== only compares @raw' do
-    expect(subject).to eq 'TEST'
+    other = WordSearch::Common::Word.new('test')
+    expect(subject).to eq other
   end
 
   it '#size give length of word' do

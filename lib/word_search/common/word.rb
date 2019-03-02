@@ -28,7 +28,11 @@ module WordSearch
       end
 
       def ==(other)
-        @raw == other
+        @raw == other.to_s
+      end
+
+      def to_s
+        @raw
       end
 
       def size
