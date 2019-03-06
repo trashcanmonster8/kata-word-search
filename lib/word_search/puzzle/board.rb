@@ -23,6 +23,10 @@ module WordSearch
       def [](index)
         @board[index]
       end
+
+      def rows
+        @board.collect { |row| row }
+      end
     end
   end
 end
