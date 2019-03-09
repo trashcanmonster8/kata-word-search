@@ -24,7 +24,7 @@ module WordSearch
       end
 
       def ==(other)
-        @raw == other.to_s
+        @raw == other.to_s.upcase
       end
 
       def to_s

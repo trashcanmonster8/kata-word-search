@@ -16,7 +16,17 @@ RSpec.describe WordSearch::Common::Word do
 
   it '#== only compares @raw' do
     other = WordSearch::Common::Word.new('test')
-    expect(subject).to eq other
+    is_expected.to eq other
+  end
+
+  it '#== compares string without reference to case' do
+    other = 'test'
+    is_expected.to eq other
+  end
+
+  it '#== compares string without reference to case' do
+    other = 'testing'
+    is_expected.to_not eq other
   end
 
   it '#size give length of word' do
