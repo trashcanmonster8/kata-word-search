@@ -48,12 +48,9 @@ RSpec.describe WordSearch::Common::Word do
   end
 
   context 'no paramters' do
-    subject { WordSearch::Common::Word.new }
+    subject { WordSearch::Common::Word.new.join(line(0..3)) }
 
-    it '#join creates new word out of array of lines' do
-      subject.join(line(0..3))
-      expect(subject).to eq 'ABCD'
-      expect(subject.found?).to be true
-    end
+    it { is_expected.to eq 'ABCD'}
+    it { is_expected.to be_found }
   end
 end

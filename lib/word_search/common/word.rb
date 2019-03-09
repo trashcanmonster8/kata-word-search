@@ -8,13 +8,11 @@ module WordSearch
     # Word class as a collection of letters
     #
     class Word
+      attr_reader :parse
+
       def initialize(word = '')
         @raw = word.upcase
-        parse
-      end
-
-      def parse
-        @parse ||= @raw.split(//).collect do |char|
+        @parse = @raw.split(//).collect do |char|
           Letter.new(char)
         end
       end
@@ -42,6 +40,7 @@ module WordSearch
       def join(letters)
         @parse = letters
         @raw = letters.map(&:char).join
+        self
       end
     end
   end
