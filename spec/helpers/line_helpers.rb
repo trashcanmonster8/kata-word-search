@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module LineHelpers
   def line(range)
     range.collect do |i|

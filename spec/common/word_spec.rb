@@ -50,7 +50,7 @@ RSpec.describe WordSearch::Common::Word do
   context 'no paramters' do
     subject { WordSearch::Common::Word.new.join(line(0..3)) }
 
-    it { is_expected.to eq 'ABCD'}
+    it { is_expected.to eq 'ABCD' }
     it { is_expected.to be_found }
   end
 end
