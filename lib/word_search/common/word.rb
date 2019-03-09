@@ -8,8 +8,6 @@ module WordSearch
     # Word class as a collection of letters
     #
     class Word
-      attr_reader :parse
-
       def initialize(word = '')
         @raw = word.upcase
         @parse = @raw.split(//).collect do |char|

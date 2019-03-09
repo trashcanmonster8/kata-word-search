@@ -23,20 +23,8 @@ RSpec.describe WordSearch::Common::Word do
     expect(subject.size).to eq 4
   end
 
-  it '#parse creates an array of Letters' do
-    expect(subject.parse).to be_a Array
-    expect(subject.parse[0]).to be_a WordSearch::Common::Letter
-  end
-
   it '#[]' do
-    subject.parse
     expect(subject[1]).to be_a WordSearch::Common::Letter
-  end
-
-  it '#parse does not overwrite changes to :parse' do
-    subject.instance_variable_set(:@parse, [:bad_object])
-    subject.parse
-    expect(subject[0]).to eq :bad_object
   end
 
   context 'letter is given coordinates' do
