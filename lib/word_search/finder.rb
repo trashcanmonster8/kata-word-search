@@ -27,17 +27,13 @@ module WordSearch
     end
 
     def find
-      permutations = permute(@query.size)
-      permutations.find do |set|
+      permute(@query.size).find do |set|
         set.find do |letters|
-          possible_word = Common::Word.new
-          possible_word.join(letters)
-          if possible_word == Common::Word.new(@query)
-            @word = possible_word
-            true
-          else
-            false
-          end
+          possible_word = Common::Word.new.join(letters)
+          next unless possible_word == Common::Word.new(@query)
+
+          @word = possible_word
+          true
         end
       end
       @word
