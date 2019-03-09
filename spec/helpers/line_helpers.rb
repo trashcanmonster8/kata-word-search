@@ -1,6 +1,8 @@
 module LineHelpers
   def line(range)
-    range.collect { |i| WordSearch::Common::Letter.new((i + 97).chr, i, i + 1) }
+    range.collect do |i|
+      WordSearch::Common::Letter.new((i + 97).chr, i, i + 1)
+    end
   end
 
   def word(range)

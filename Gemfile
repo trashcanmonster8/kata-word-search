@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '~> 2.6'
+ruby '~> 2.5'
 
 gem 'rake', '~> 12.3'
 gem 'rspec', '~> 3.8'
