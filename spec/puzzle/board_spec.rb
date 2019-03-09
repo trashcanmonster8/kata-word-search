@@ -21,4 +21,11 @@ RSpec.describe WordSearch::Puzzle::Board do
     end
     expect(subject.rows[0]).to eq row
   end
+
+  it '#rows(:reverse)' do
+    row = EXPECTED_BOARD[0].each_with_index.map do |char, x|
+      WordSearch::Common::Letter.new(char, x, 0)
+    end.reverse
+    expect(subject.rows(:reverse)[0]).to eq row
+  end
 end

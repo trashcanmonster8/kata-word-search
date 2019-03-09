@@ -24,8 +24,14 @@ module WordSearch
         @board[index]
       end
 
-      def rows
-        @board.collect { |row| row }
+      def rows(direction = nil)
+        @board.collect do |row|
+          if direction
+            row.send(direction)
+          else
+            row
+          end
+        end
       end
     end
   end
