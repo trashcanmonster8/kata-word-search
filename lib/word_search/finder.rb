@@ -30,7 +30,7 @@ module WordSearch
       permute(@query.size).find do |set|
         set.find do |letters|
           possible_word = Common::Word.new.join(letters)
-          next unless possible_word == Common::Word.new(@query)
+          next unless possible_word == @query
 
           @word = possible_word
           true
