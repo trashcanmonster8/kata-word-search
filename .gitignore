@@ -1,3 +1,2 @@
-Gemfile.lock
-.rspec
 /.vscode/
+Gemfile.lock

@@ -48,11 +48,10 @@ RSpec.describe WordSearch::Common::Word do
   end
 
   context 'no paramters' do
-    let(:letters) { (0..3).collect { |i| WordSearch::Common::Letter.new((i + 97).chr, i, i + 1) } }
     subject { WordSearch::Common::Word.new }
 
     it '#join creates new word out of array of lines' do
-      subject.join(letters)
+      subject.join(line(0..3))
       expect(subject).to eq 'ABCD'
       expect(subject.found?).to be true
     end

@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-require './spec/helpers/line_helpers'
 require 'word_search/finder'
-
-RSpec.configure do |c|
-  c.include LineHelpers
-  c.extend LineHelpers
-end
 
 RSpec.describe WordSearch::Finder do
   subject { WordSearch::Finder.new(line(0..13), query) }
