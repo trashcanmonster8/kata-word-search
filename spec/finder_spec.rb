@@ -7,7 +7,7 @@ RSpec.describe WordSearch::Finder do
   let(:query) { 'hi' }
 
   it '#permute sorts line into different possible permutations' do
-    expect(subject.permute(1)[0][10].first).to eq line(10..11).first
+    expect(subject.permute(1)[0][10]).to eq [letter('k', 10, 11)]
   end
 
   it '#permute modulo 2' do

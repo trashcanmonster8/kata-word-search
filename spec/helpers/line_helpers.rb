@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 module LineHelpers
+  def letter(char, x_corr = nil, y_corr = nil)
+    WordSearch::Common::Letter.new(char, x_corr, y_corr)
+  end
+
   def line(range)
     range.collect do |i|
-      WordSearch::Common::Letter.new((i + 97).chr, i, i + 1)
+      letter((i + 97).chr, i, i + 1)
     end
   end
 
