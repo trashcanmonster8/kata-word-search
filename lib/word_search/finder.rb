@@ -5,10 +5,12 @@ module WordSearch
   # Finds a word in a line of letters
   #
   class Finder
-    attr_reader :permutations
+    attr_reader :word
 
-    def initialize(line)
+    def initialize(line, query)
       @line = line
+      @query = query
+      @word = ''
     end
 
     def permute(modulus)
@@ -24,17 +26,21 @@ module WordSearch
       end
     end
 
-    def find(word)
-      permutations = permute(word.size)
-      found = nil
+    def find
+      permutations = permute(@query.size)
       permutations.find do |set|
-        found = set.find do |letters|
+        set.find do |letters|
           possible_word = Common::Word.new
           possible_word.join(letters)
-          possible_word == Common::Word.new(word)
+          if possible_word == Common::Word.new(@query)
+            @word = possible_word
+            true
+          else
+            false
+          end
         end
       end
-      found
+      @word
     end
   end
 end
