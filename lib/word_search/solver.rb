@@ -9,19 +9,21 @@ module WordSearch
   #
   class Solver
     attr_reader :solution
-    attr_writer :board, :word_bank
+    attr_writer :word_bank
 
     def initialize
       @solution = []
     end
 
-    def collect_arrangements
+    def collect_arrangements(board)
       @arrangements = Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
-        @board.send(arrangement)
+        board.send(arrangement)
       end
       @arrangements << Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
-        @board.send(arrangement, :reverse)
+        board.send(arrangement, :reverse)
       end
     end
+
+    alias board= collect_arrangements
   end
 end
