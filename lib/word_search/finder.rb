@@ -10,7 +10,7 @@ module WordSearch
     def initialize(line, query)
       @line = line
       @query = query
-      @word = ''
+      @word = nil
     end
 
     def permute(modulus)
