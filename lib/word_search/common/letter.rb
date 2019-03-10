@@ -27,6 +27,10 @@ module WordSearch
           @char == other.to_s.upcase
         end
       end
+
+      def inspect
+        "#{@char}, #{location.inspect}"
+      end
     end
   end
 end

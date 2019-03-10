@@ -61,5 +61,9 @@ RSpec.describe WordSearch::Common::Letter do
     it '#== not case sensitive' do
       is_expected.to eq 'c'
     end
+
+    it '#inspect' do
+      expect(subject.inspect). to eq 'C, (1, 2)'
+    end
   end
 end
