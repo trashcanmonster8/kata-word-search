@@ -26,5 +26,9 @@ module WordSearch
       @solver.solve
       print
     end
+
+    def print
+      puts @solver.solution.join("\n")
+    end
   end
 end

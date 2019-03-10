@@ -39,4 +39,10 @@ RSpec.describe WordSearch::Application do
     expect(subject).to receive(:print)
     subject.run
   end
+
+  specify '#prints inspects each solution' do
+    allow(solver).to receive(:solution).and_return([0, 1, 2, 3, 4])
+    expect { subject.print }.to output("0\n1\n2\n3\n4\n").to_stdout
+    subject.print
+  end
 end
