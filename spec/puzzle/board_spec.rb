@@ -26,4 +26,9 @@ RSpec.describe WordSearch::Puzzle::Board do
   it '#columns' do
     expect(subject.columns).to eq EXPECTED_BOARD.transpose
   end
+
+  it '#columns' do
+    expect(subject.columns(:reverse)).to eq EXPECTED_BOARD.transpose
+                                                          .map(&:reverse)
+  end
 end

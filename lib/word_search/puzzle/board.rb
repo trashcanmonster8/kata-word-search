@@ -28,8 +28,8 @@ module WordSearch
         @board.collect { |row| row.send(direction) }
       end
 
-      def columns
-        @board.transpose
+      def columns(direction = :itself)
+        @board.transpose.collect { |row| row.send(direction) }
       end
     end
   end
