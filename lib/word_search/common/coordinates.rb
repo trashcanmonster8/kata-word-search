@@ -31,6 +31,10 @@ module WordSearch
       def set?
         ORDER.none? { |i| self[i].nil? }
       end
+
+      def inspect
+        "(#{@x}, #{@y})"
+      end
     end
   end
 end

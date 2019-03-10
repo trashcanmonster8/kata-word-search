@@ -32,5 +32,9 @@ RSpec.describe WordSearch::Common::Coordinates.new do
     it '@set? is true' do
       expect(described_class.set?).to eq true
     end
+
+    it '#inspect' do
+      expect(described_class.inspect).to eq '(3, 4)'
+    end
   end
 end
