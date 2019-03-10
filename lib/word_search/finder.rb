@@ -26,7 +26,7 @@ module WordSearch
       end
     end
 
-    def find
+    def search
       permute(@query.size).find do |set|
         set.find do |letters|
           possible_word = Common::Word.new.join(letters)

@@ -22,8 +22,8 @@ RSpec.describe WordSearch::Finder do
     expect(subject.permute(7)[5][0]).to match_array line(5..11)
   end
 
-  it '#finds word' do
-    subject.find
+  it '#search word' do
+    subject.search
     expect(subject.word).to eq word(7..8)
   end
 end
