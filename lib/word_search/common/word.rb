@@ -40,6 +40,11 @@ module WordSearch
         @raw = letters.map(&:char).join
         self
       end
+
+      def inspect
+        coordinates = @parse.map { |letter| letter.location.inspect }.join(',')
+        "#{@raw}: #{coordinates}"
+      end
     end
   end
 end

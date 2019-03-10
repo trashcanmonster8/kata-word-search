@@ -39,9 +39,17 @@ RSpec.describe WordSearch::Common::Word do
 
   context 'letter is given coordinates' do
     subject { WordSearch::Common::Word.new('w') }
-    it '#found? is true if all letters are found' do
+
+    before do
       subject[0].location = WordSearch::Common::Coordinates.new(3, 5)
+    end
+
+    it '#found? is true if all letters are found' do
       expect(subject.found?).to eq true
+    end
+
+    it '#inspect' do
+      expect(subject.inspect).to eq 'W: (3, 5)'
     end
   end
 
