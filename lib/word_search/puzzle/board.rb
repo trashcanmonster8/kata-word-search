@@ -8,6 +8,8 @@ module WordSearch
     # Word search puzzle
     #
     class Board
+      ARRANGEMENTS = %i[rows columns forward_diagonal backward_diagonal].freeze
+
       def initialize(string)
         @board = parse(string)
       end
