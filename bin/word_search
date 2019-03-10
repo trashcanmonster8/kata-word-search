@@ -6,4 +6,4 @@ $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 require 'word_search'
 
-WordSearch::Application.new(File.read(ARGV.shift))
+WordSearch::Application.new(File.read(ARGV.shift)).run

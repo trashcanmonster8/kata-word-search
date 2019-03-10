@@ -20,5 +20,11 @@ module WordSearch
       @solver.word_bank = file_lines.shift.split(',')
       @solver.board = WordSearch::Puzzle::Board.new(file_lines.join('\n'))
     end
+
+    def run
+      load
+      @solver.solve
+      print
+    end
   end
 end
