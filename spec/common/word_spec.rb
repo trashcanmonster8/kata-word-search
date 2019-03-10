@@ -23,6 +23,10 @@ RSpec.describe WordSearch::Common::Word do
     it '#size give length of word' do
       expect(subject.size).to eq 4
     end
+
+    it '#inspect' do
+      expect(subject.inspect).to eq 'TEST'
+    end
   end
 
   context 'letter is given coordinates' do

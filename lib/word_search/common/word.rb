@@ -42,8 +42,14 @@ module WordSearch
       end
 
       def inspect
-        coordinates = @parse.map { |letter| letter.location.inspect }.join(',')
-        "#{@raw}: #{coordinates}"
+        out = @raw
+
+        if @parse.any?(&:found?)
+          out << ': '
+          out << @parse.map { |letter| letter.location.inspect }.join(',')
+        end
+
+        out
       end
     end
   end
