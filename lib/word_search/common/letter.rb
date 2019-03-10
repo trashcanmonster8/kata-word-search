@@ -21,7 +21,11 @@ module WordSearch
       end
 
       def ==(other)
-        @char == other.char && @location == other.location
+        if other.is_a? Letter
+          @char == other.char && @location == other.location
+        else
+          @char == other.to_s.upcase
+        end
       end
     end
   end

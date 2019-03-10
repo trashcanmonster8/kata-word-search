@@ -16,6 +16,14 @@ RSpec.describe WordSearch::Common::Letter do
     is_expected.to_not eq letter('B')
   end
 
+  it '#== String object' do
+    is_expected.to_not eq 'B'
+  end
+
+  it '#== not case sensitive' do
+    is_expected.to eq 'c'
+  end
+
   it '#found? is false if all coordinates are not set' do
     expect(subject.found?).to be_falsey
   end
@@ -44,6 +52,14 @@ RSpec.describe WordSearch::Common::Letter do
 
     it '#== if coordinates are not the same' do
       is_expected.to_not eq letter('C', 2, 2)
+    end
+
+    it '#== String object' do
+      is_expected.to_not eq 'B'
+    end
+
+    it '#== not case sensitive' do
+      is_expected.to eq 'c'
     end
   end
 end
