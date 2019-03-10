@@ -25,5 +25,14 @@ module WordSearch
     end
 
     alias board= collect_arrangements
+
+    def search_arrangement(arrangement, query)
+      arrangement.find do |line|
+        solution = Finder.new(line, query).search
+        next unless solution
+
+        @solution << solution
+      end
+    end
   end
 end
