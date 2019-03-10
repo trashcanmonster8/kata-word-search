@@ -24,15 +24,15 @@ module WordSearch
         @board[index]
       end
 
-      def rows(direction = :itself)
-        @board.collect { |row| row.send(direction) }
+      def rows(direction = nil)
+        direction(@board, direction)
       end
 
-      def columns(direction = :itself)
-        @board.transpose.collect { |row| row.send(direction) }
+      def columns(direction = nil)
+        direction(@board.transpose, direction)
       end
 
-      def forward_diagonal(direction = :itself)
+      def forward_diagonal(direction = nil)
         # Shamelessly stolen the following resource
         # https://stackoverflow.com/questions/2506621/ruby-getting-the-diagonal-elements-in-a-2d-array
         padding = @board.size - 1
@@ -44,12 +44,10 @@ module WordSearch
           padding -= 1
         end
 
-        padded_matrix.transpose.map(&:compact).collect do |row|
-          row.send(direction)
-        end
+        direction(padded_matrix.transpose.map(&:compact), direction)
       end
 
-      def backward_diagonal(direction = :itself)
+      def backward_diagonal(direction = nil)
         # Shamelessly stolen the following resource
         # https://stackoverflow.com/questions/2506621/ruby-getting-the-diagonal-elements-in-a-2d-array
         padding = @board.size - 1
@@ -61,9 +59,15 @@ module WordSearch
           padding -= 1
         end
 
-        padded_matrix.transpose.map(&:compact).collect do |row|
-          row.send(direction)
-        end
+        direction(padded_matrix.transpose.map(&:compact), direction)
+      end
+
+      private
+
+      def direction(lines, reverse = nil)
+        return lines unless reverse
+
+        lines.collect(&:reverse)
       end
     end
   end
