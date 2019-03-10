@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module LineHelpers
+module PuzzleHelpers
   def letter(char, x_corr = nil, y_corr = nil)
     WordSearch::Common::Letter.new(char, x_corr, y_corr)
   end
