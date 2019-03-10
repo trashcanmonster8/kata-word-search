@@ -5,7 +5,9 @@ require 'word_search/puzzle/board'
 
 RSpec.describe WordSearch::Puzzle::Board do
   subject { described_class.new("C,B,V\nR,T,M\nW,E,Q") }
-  EXPECTED_BOARD = [%w[C B V], %w[R T M], %w[W E Q]].freeze
+  EXPECTED_BOARD = [%w[C B V],
+                    %w[R T M],
+                    %w[W E Q]].freeze
 
   EXPECTED_BOARD.each_with_index do |row, j|
     row.each_with_index do |char, i|
@@ -27,8 +29,26 @@ RSpec.describe WordSearch::Puzzle::Board do
     expect(subject.columns).to eq EXPECTED_BOARD.transpose
   end
 
-  it '#columns' do
+  it '#columns(:reverse)' do
     expect(subject.columns(:reverse)).to eq EXPECTED_BOARD.transpose
                                                           .map(&:reverse)
+  end
+
+  it '#forward_diagonal' do
+    expect(subject.forward_diagonal).to eq [[],
+                                            %w[C],
+                                            %w[B R],
+                                            %w[V T W],
+                                            %w[M E],
+                                            %w[Q]]
+  end
+
+  it '#forward_diagonal(:reverse)' do
+    expect(subject.forward_diagonal(:reverse)).to eq [[],
+                                                      %w[C],
+                                                      %w[R B],
+                                                      %w[W T V],
+                                                      %w[E M],
+                                                      %w[Q]]
   end
 end
