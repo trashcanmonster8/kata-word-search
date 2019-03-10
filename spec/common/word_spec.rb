@@ -4,37 +4,25 @@ require 'word_search/common/letter'
 require 'word_search/common/word'
 
 RSpec.describe WordSearch::Common::Word do
-  subject { WordSearch::Common::Word.new('test') }
+  context 'word with no coordinates' do
+    subject { WordSearch::Common::Word.new('test') }
 
-  it '#found? is false if any letters are not found' do
-    expect(subject.found?).to eq false
-  end
+    it { is_expected.to_not be_found }
+    it { is_expected.to eq WordSearch::Common::Word.new('test') }
+    it { is_expected.to eq 'test' }
+    it { is_expected.to_not eq 'testing' }
 
-  it '#to_s prints @raw' do
-    expect(subject.to_s).to eq 'TEST'
-  end
+    it '#to_s prints @raw' do
+      expect(subject.to_s).to eq 'TEST'
+    end
 
-  it '#== only compares @raw' do
-    other = WordSearch::Common::Word.new('test')
-    is_expected.to eq other
-  end
+    it '#[]' do
+      expect(subject[1]).to eq WordSearch::Common::Letter.new('e')
+    end
 
-  it '#== compares string without reference to case' do
-    other = 'test'
-    is_expected.to eq other
-  end
-
-  it '#== compares string without reference to case' do
-    other = 'testing'
-    is_expected.to_not eq other
-  end
-
-  it '#size give length of word' do
-    expect(subject.size).to eq 4
-  end
-
-  it '#[]' do
-    expect(subject[1]).to be_a WordSearch::Common::Letter
+    it '#size give length of word' do
+      expect(subject.size).to eq 4
+    end
   end
 
   context 'letter is given coordinates' do
@@ -44,9 +32,7 @@ RSpec.describe WordSearch::Common::Word do
       subject[0].location = WordSearch::Common::Coordinates.new(3, 5)
     end
 
-    it '#found? is true if all letters are found' do
-      expect(subject.found?).to eq true
-    end
+    it { is_expected.to be_found }
 
     it '#inspect' do
       expect(subject.inspect).to eq 'W: (3, 5)'
@@ -58,5 +44,9 @@ RSpec.describe WordSearch::Common::Word do
 
     it { is_expected.to eq 'ABCD' }
     it { is_expected.to be_found }
+
+    it '#inspect' do
+      expect(subject.inspect).to eq 'ABCD: (0, 1),(1, 2),(2, 3),(3, 4)'
+    end
   end
 end
