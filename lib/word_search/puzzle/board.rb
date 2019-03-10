@@ -33,6 +33,10 @@ module WordSearch
           end
         end
       end
+
+      def columns
+        @board.transpose
+      end
     end
   end
 end
