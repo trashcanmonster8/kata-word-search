@@ -16,16 +16,10 @@ RSpec.describe WordSearch::Puzzle::Board do
   end
 
   it '#rows' do
-    row = EXPECTED_BOARD[0].each_with_index.map do |char, x|
-      WordSearch::Common::Letter.new(char, x, 0)
-    end
-    expect(subject.rows[0]).to eq row
+    expect(subject.rows).to eq EXPECTED_BOARD
   end
 
   it '#rows(:reverse)' do
-    row = EXPECTED_BOARD[0].each_with_index.map do |char, x|
-      WordSearch::Common::Letter.new(char, x, 0)
-    end.reverse
-    expect(subject.rows(:reverse)[0]).to eq row
+    expect(subject.rows(:reverse)).to eq EXPECTED_BOARD.map(&:reverse)
   end
 end
