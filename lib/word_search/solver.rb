@@ -32,6 +32,13 @@ module WordSearch
         next unless solution
 
         @solution << solution
+        true
+      end
+    end
+
+    def search(query)
+      @arrangements.find do |arrangement|
+        search_arrangement(arrangement, query)
       end
     end
   end
