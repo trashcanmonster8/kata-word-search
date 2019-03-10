@@ -8,8 +8,8 @@ module WordSearch
     # Word search puzzle
     #
     class Board
-      def initialize(string = nil)
-        @board = string.is_a?(String) ? parse(string) : nil
+      def initialize(string)
+        @board = parse(string)
       end
 
       def parse(string)
