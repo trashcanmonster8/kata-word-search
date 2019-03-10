@@ -65,7 +65,7 @@ RSpec.describe WordSearch::Common::Letter do
     end
 
     it '#inspect' do
-      expect(subject.inspect). to eq 'C, (1, 2)'
+      expect(subject.inspect). to eq 'C, (1,2)'
     end
   end
 end

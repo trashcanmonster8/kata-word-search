@@ -39,7 +39,7 @@ RSpec.describe WordSearch::Common::Word do
     it { is_expected.to be_found }
 
     it '#inspect' do
-      expect(subject.inspect).to eq 'W: (3, 5)'
+      expect(subject.inspect).to eq 'W: (3,5)'
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe WordSearch::Common::Word do
     it { is_expected.to be_found }
 
     it '#inspect' do
-      expect(subject.inspect).to eq 'ABCD: (0, 1),(1, 2),(2, 3),(3, 4)'
+      expect(subject.inspect).to eq 'ABCD: (0,1),(1,2),(2,3),(3,4)'
     end
   end
 end

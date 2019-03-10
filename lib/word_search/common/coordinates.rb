@@ -33,7 +33,7 @@ module WordSearch
       end
 
       def inspect
-        "(#{@x}, #{@y})"
+        "(#{@x},#{@y})"
       end
     end
   end

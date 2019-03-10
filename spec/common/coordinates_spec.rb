@@ -26,7 +26,7 @@ RSpec.describe WordSearch::Common::Coordinates do
     it { is_expected.to be_set }
 
     it '#inspect' do
-      expect(subject.inspect).to eq '(3, 4)'
+      expect(subject.inspect).to eq '(3,4)'
     end
   end
 end
