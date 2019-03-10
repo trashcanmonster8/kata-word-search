@@ -48,6 +48,23 @@ module WordSearch
           row.send(direction)
         end
       end
+
+      def backward_diagonal(direction = :itself)
+        # Shamelessly stolen the following resource
+        # https://stackoverflow.com/questions/2506621/ruby-getting-the-diagonal-elements-in-a-2d-array
+        padding = @board.size - 1
+        padded_matrix = []
+
+        @board.reverse_each do |row|
+          inverse_padding = @board.size - padding
+          padded_matrix << ([nil] * inverse_padding) + row + ([nil] * padding)
+          padding -= 1
+        end
+
+        padded_matrix.transpose.map(&:compact).collect do |row|
+          row.send(direction)
+        end
+      end
     end
   end
 end

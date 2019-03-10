@@ -51,4 +51,22 @@ RSpec.describe WordSearch::Puzzle::Board do
                                                       %w[E M],
                                                       %w[Q]]
   end
+
+  it '#backward_diagonal' do
+    expect(subject.backward_diagonal).to eq [[],
+                                             %w[W],
+                                             %w[E R],
+                                             %w[Q T C],
+                                             %w[M B],
+                                             %w[V]]
+  end
+
+  it '#backward_diagonal(:reverse)' do
+    expect(subject.backward_diagonal(:reverse)).to eq [[],
+                                                       %w[W],
+                                                       %w[R E],
+                                                       %w[C T Q],
+                                                       %w[B M],
+                                                       %w[V]]
+  end
 end
