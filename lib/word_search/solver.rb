@@ -12,6 +12,7 @@ module WordSearch
     attr_writer :word_bank
 
     def initialize
+      @word_bank = []
       @solution = []
     end
 
@@ -40,6 +41,19 @@ module WordSearch
       @arrangements.find do |arrangement|
         search_arrangement(arrangement, query)
       end
+    end
+
+    def solve
+      @word_bank.find do |query|
+        search(query)
+        true if solved?
+      end
+    end
+
+    private
+
+    def solved?
+      ((@word_bank - @solution) + (@solution - @word_bank)).blank?
     end
   end
 end

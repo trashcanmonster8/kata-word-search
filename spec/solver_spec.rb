@@ -42,6 +42,23 @@ RSpec.describe WordSearch::Solver do
         .twice
       subject.search(query)
     end
+
+    it '#solve breaks when solved' do
+      subject.word_bank = %w[test thing funny extra]
+      allow(subject).to receive(:solved?).and_return(false, false, true)
+      is_expected.to receive(:search).with('test').once
+      is_expected.to receive(:search).with('thing').once
+      is_expected.to receive(:search).with('funny').once
+      is_expected.to_not receive(:search).with('extra')
+      subject.solve
+    end
+
+    it '#solve to return truthy' do
+      subject.word_bank = %w[test thing funny]
+      allow(subject).to receive(:solved?).and_return(true)
+      allow(subject).to receive(:search)
+      expect(subject.solve).to be_truthy
+    end
   end
 
   context 'word is not in the puzzle' do
@@ -66,6 +83,22 @@ RSpec.describe WordSearch::Solver do
         .exactly(stub_arrangment.size)
         .times
       subject.search(query)
+    end
+
+    it '#solve searches all words in :@word_bank' do
+      subject.word_bank = %w[test thing funny]
+      allow(subject).to receive(:solved?).and_return(false)
+      expect(subject).to receive(:search).with('test').once
+      expect(subject).to receive(:search).with('thing').once
+      expect(subject).to receive(:search).with('funny').once
+      subject.solve
+    end
+
+    it '#solve to return falsey' do
+      subject.word_bank = %w[test thing funny]
+      allow(subject).to receive(:solved?).and_return(false)
+      allow(subject).to receive(:search)
+      expect(subject.solve).to be_falsey
     end
   end
 end
