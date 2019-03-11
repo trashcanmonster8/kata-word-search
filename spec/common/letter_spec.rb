@@ -8,30 +8,15 @@ RSpec.describe WordSearch::Common::Letter do
     subject { WordSearch::Common::Letter.new('c') }
 
     it { is_expected.to have_attributes char: 'C' }
-
-    it '#== if char and coordinates are the same' do
-      is_expected.to eq letter('C')
-    end
-
-    it '#== if char is not the same' do
-      is_expected.to_not eq letter('B')
-    end
-
-    it '#== String object' do
-      is_expected.to_not eq 'B'
-    end
-
-    it '#== not case sensitive' do
-      is_expected.to eq 'c'
-    end
-
-    it '#found? is false if all coordinates are not set' do
-      expect(subject.found?).to be_falsey
-    end
+    it { is_expected.to eq letter('C') }
+    it { is_expected.to_not eq letter('B') }
+    it { is_expected.to_not eq 'B' }
+    it { is_expected.to eq 'c' }
+    it { is_expected.to_not be_found }
 
     it '#found? is false if one coordinate is not set' do
       subject.location = WordSearch::Common::Coordinates.new(3)
-      expect(subject.found?).to be_falsey
+      is_expected.to_not be_found
     end
 
     it '#found? is true if both coordinates are set' do
@@ -43,26 +28,11 @@ RSpec.describe WordSearch::Common::Letter do
   context 'given coordinates' do
     subject { WordSearch::Common::Letter.new('C', 1, 2) }
     it { is_expected.to have_attributes char: 'C' }
-
-    it '#found? is true if corrdinates are set' do
-      expect(subject.found?).to be_truthy
-    end
-
-    it '#== if char and coordinates are the same' do
-      is_expected.to eq letter('C', 1, 2)
-    end
-
-    it '#== if coordinates are not the same' do
-      is_expected.to_not eq letter('C', 2, 2)
-    end
-
-    it '#== String object' do
-      is_expected.to_not eq 'B'
-    end
-
-    it '#== not case sensitive' do
-      is_expected.to eq 'c'
-    end
+    it { is_expected.to eq letter('C', 1, 2) }
+    it { is_expected.to_not eq letter('C', 2, 2) }
+    it { is_expected.to_not eq 'B' }
+    it { is_expected.to eq 'c' }
+    it { is_expected.to be_found }
 
     it '#inspect' do
       expect(subject.inspect). to eq 'C, (1,2)'
