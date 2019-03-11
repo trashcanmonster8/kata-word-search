@@ -113,7 +113,9 @@ RSpec.describe WordSearch::Solver do
     end
 
     it 'solves the puzzle' do
-      expect(subject.solution).to match_array solution
+      subject.solution.zip(solution).each do |answer, expected|
+        expect(answer.to_s).to eql expected.to_s
+      end
     end
   end
 end
