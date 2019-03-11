@@ -18,7 +18,7 @@ module WordSearch
       data = File.read(@file)
       file_lines = data.split("\n")
       @solver.word_bank = file_lines.shift.split(',')
-      @solver.board = WordSearch::Board.new(file_lines.join('\n'))
+      @solver.board = WordSearch::Board.new(file_lines.join("\n"))
     end
 
     def run

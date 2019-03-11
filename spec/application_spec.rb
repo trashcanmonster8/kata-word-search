@@ -4,7 +4,7 @@ require 'word_search/application'
 
 RSpec.describe WordSearch::Application do
   subject { WordSearch::Application.new('file_name.txt') }
-  let(:solver) { instance_double(WordSearch::Solver) }
+  let(:solver) { WordSearch::Solver.new }
   let(:file_data) do
     "test,thing,extra\n" \
     "A,B,C,D,E,F,G\n" \
@@ -25,11 +25,19 @@ RSpec.describe WordSearch::Application do
     subject.instance_variable_set(:@solver, solver)
   end
 
-  it '#load imports data to a solver' do
-    expect(File).to receive(:read).with('file_name.txt').and_return(file_data)
+  it '#load imports WordSearch::Solver#word_bank' do
+    allow(File).to receive(:read).with('file_name.txt').and_return(file_data)
     expect(solver).to receive(:word_bank=).with(%w[test thing extra])
-    expect(solver).to receive(:board=)
+    allow(solver).to receive(:board=)
       .with(instance_of(WordSearch::Board))
+    subject.load
+  end
+
+  it '#load implements WordSearch::Solver#board=' do
+    allow(File).to receive(:read).with('file_name.txt').and_return(file_data)
+    allow(solver).to receive(:word_bank=).with(instance_of(Array))
+    allow(solver).to receive(:board=)
+      .with(WordSearch::Board.new(board_data))
     subject.load
   end
 
