@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'word_search/finder'
 require 'word_search/puzzle/board'
 
 module WordSearch
@@ -20,9 +21,11 @@ module WordSearch
       @arrangements = Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
         board.send(arrangement)
       end
-      @arrangements << Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
-        board.send(arrangement, :reverse)
-      end
+      @arrangements.concat(
+        Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
+          board.send(arrangement, :reverse)
+        end
+      )
     end
 
     alias board= collect_arrangements
@@ -53,7 +56,7 @@ module WordSearch
     private
 
     def solved?
-      ((@word_bank - @solution) + (@solution - @word_bank)).blank?
+      ((@word_bank - @solution) + (@solution - @word_bank)).empty?
     end
   end
 end

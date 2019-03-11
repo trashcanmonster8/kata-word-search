@@ -4,16 +4,16 @@ require 'word_search/solver'
 
 RSpec.describe WordSearch::Solver do
   subject { WordSearch::Solver.new }
-  let(:board) { instance_double(WordSearch::Puzzle::Board) }
+  let(:board_dbl) { instance_double(WordSearch::Puzzle::Board) }
 
   it { is_expected.to have_attributes(solution: []) }
 
   it '#collect_arrangements' do
     WordSearch::Puzzle::Board::ARRANGEMENTS.each do |arrangement|
-      expect(board).to receive(arrangement).with(no_args)
-      expect(board).to receive(arrangement).with(:reverse)
+      expect(board_dbl).to receive(arrangement).with(no_args)
+      expect(board_dbl).to receive(arrangement).with(:reverse)
     end
-    subject.collect_arrangements(board)
+    subject.collect_arrangements(board_dbl)
   end
 
   it '#board= alias of collect_arrangements' do
@@ -99,6 +99,21 @@ RSpec.describe WordSearch::Solver do
       allow(subject).to receive(:solved?).and_return(false)
       allow(subject).to receive(:search)
       expect(subject.solve).to be_falsey
+    end
+  end
+
+  context 'full solution' do
+    let(:board_object) { WordSearch::Puzzle::Board.new(board) }
+    let(:word_bank_array) { word_bank.split(',') }
+
+    before do
+      subject.board = board_object
+      subject.word_bank = word_bank_array
+      subject.solve
+    end
+
+    it 'solves the puzzle' do
+      expect(subject.solution).to match_array solution
     end
   end
 end
