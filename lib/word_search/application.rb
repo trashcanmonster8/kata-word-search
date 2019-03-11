@@ -2,7 +2,7 @@
 
 require 'word_search/common/word'
 require 'word_search/solver'
-require 'word_search/puzzle/board'
+require 'word_search/board'
 
 module WordSearch
   #
@@ -18,7 +18,7 @@ module WordSearch
       data = File.read(@file)
       file_lines = data.split("\n")
       @solver.word_bank = file_lines.shift.split(',')
-      @solver.board = WordSearch::Puzzle::Board.new(file_lines.join('\n'))
+      @solver.board = WordSearch::Board.new(file_lines.join('\n'))
     end
 
     def run

@@ -29,7 +29,7 @@ RSpec.describe WordSearch::Application do
     expect(File).to receive(:read).with('file_name.txt').and_return(file_data)
     expect(solver).to receive(:word_bank=).with(%w[test thing extra])
     expect(solver).to receive(:board=)
-      .with(instance_of(WordSearch::Puzzle::Board))
+      .with(instance_of(WordSearch::Board))
     subject.load
   end
 

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require 'word_search/common/letter'
-require 'word_search/puzzle/board'
+require 'word_search/board'
 
-RSpec.describe WordSearch::Puzzle::Board do
+RSpec.describe WordSearch::Board do
   subject { described_class.new("C,B,V\nR,T,M\nW,E,Q") }
   EXPECTED_BOARD = [%w[C B V],
                     %w[R T M],

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'word_search/finder'
-require 'word_search/puzzle/board'
+require 'word_search/board'
 
 module WordSearch
   #
@@ -18,11 +18,11 @@ module WordSearch
     end
 
     def collect_arrangements(board)
-      @arrangements = Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
+      @arrangements = Board::ARRANGEMENTS.collect do |arrangement|
         board.send(arrangement)
       end
       @arrangements.concat(
-        Puzzle::Board::ARRANGEMENTS.collect do |arrangement|
+        Board::ARRANGEMENTS.collect do |arrangement|
           board.send(arrangement, :reverse)
         end
       )

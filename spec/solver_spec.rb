@@ -4,12 +4,12 @@ require 'word_search/solver'
 
 RSpec.describe WordSearch::Solver do
   subject { WordSearch::Solver.new }
-  let(:board_dbl) { instance_double(WordSearch::Puzzle::Board) }
+  let(:board_dbl) { instance_double(WordSearch::Board) }
 
   it { is_expected.to have_attributes(solution: []) }
 
   it '#collect_arrangements' do
-    WordSearch::Puzzle::Board::ARRANGEMENTS.each do |arrangement|
+    WordSearch::Board::ARRANGEMENTS.each do |arrangement|
       expect(board_dbl).to receive(arrangement).with(no_args)
       expect(board_dbl).to receive(arrangement).with(:reverse)
     end
@@ -103,7 +103,7 @@ RSpec.describe WordSearch::Solver do
   end
 
   context 'full solution' do
-    let(:board_object) { WordSearch::Puzzle::Board.new(board) }
+    let(:board_object) { WordSearch::Board.new(board) }
     let(:word_bank_array) { word_bank.split(',') }
 
     before do
