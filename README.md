@@ -19,7 +19,7 @@ See [here](https://github.com/PillarTechnology/kata-word-search).
 
 ## Development
 
-Developed on `Ruby v2.5` and may be compatible with `Ruby v2.x`. See [Gemfile](Gemfile) for necessary libraries for development. Otherwise, it runs solely on native ruby libraries.
+Developed on `Ruby v2.5` and may be compatible with `Ruby v2.x`. See [Gemfile](Gemfile) for necessary libraries for development.
 
 ### Installation
 
@@ -31,7 +31,7 @@ $ bundle install
 
 ### Rake Tasks
 
-Development tasks are handle by `rake` and configured in the [Rakefile](Rakefile). To see all avaliable rake tasks run:
+Development tasks are handle by [Rake](https://ruby.github.io/rake/) and configured in the [Rakefile](Rakefile). To see all avaliable rake tasks run:
 
 ```bash
 $ rake -T
@@ -42,7 +42,7 @@ $ rake -T
 Unit tests are developed in [RSpec](http://rspec.info/). To run tests, run the following command:
 
 ```bash
-rake spec
+$ rake spec
 ```
 
 `RSpec` default command line arguments are managed by [.rspec](.rspec) file.
@@ -52,13 +52,13 @@ rake spec
 [Rubocop](https://rubocop.readthedocs.io/en/latest/) maintains compliance to the [ruby style guide](https://github.com/rubocop-hq/ruby-style-guide). To see styles that need correction run:
 
 ```bash
-rake rubocop
+$ rake rubocop
 ```
 
-`Rubocop` has an auto correct feature to fix styles that don't affect the behavior of the code. To use this feature runL
+`Rubocop` has an auto correct feature to fix styles that don't affect the behavior of the code. To use this feature run:
 
 ```bash
-rake rubocop:auto_correct
+$ rake rubocop:auto_correct
 ```
 
 `Rubocop` is configured by [.rubocop.yml](.rubocop.yml).
@@ -73,10 +73,13 @@ To run the application, run the executable [bin/word_search](bin/word_search) wi
 
 The repo contains two example puzzles, one from the [original kata](https://github.com/PillarTechnology/kata-word-search#input) and a custom problem. Here is the original [problem](puzzles/puzzle_one.txt) and [solution](puzzles/solution_one.txt). The second problem is [here](puzzles/puzzle_two.txt) with [solution](puzzles/solution_two.txt).
 
+The examples assume you are in the project's directory to execute. This does not install any commands on the system's `PATH`.
+
 ### Example 1
 
 ```bash
-$ ./bin/word_search puzzles/puzzle_one.txt
+$ <project_dir>/bin/word_search puzzles/puzzle_one.txt
+
 KHAN: (5,9),(5,8),(5,7),(5,6)
 KIRK: (4,7),(3,7),(2,7),(1,7)
 SCOTTY: (0,5),(1,5),(2,5),(3,5),(4,5),(5,5)
@@ -88,7 +91,8 @@ UHURA: (4,0),(3,1),(2,2),(1,3),(0,4)
 ### Example 2
 
 ```bash
-$ ./bin/word_search puzzles/puzzle_two.txt
+$ <project_dir>/bin/word_search puzzles/puzzle_two.txt
+
 BOHR: (21,15),(21,14),(21,13),(21,12)
 EINSTEIN: (26,6),(26,7),(26,8),(26,9),(26,10),(26,11),(26,12),(26,13)
 FEYNMAN: (19,3),(18,4),(17,5),(16,6),(15,7),(14,8),(13,9)
