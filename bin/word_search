@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 # frozen_string_literal: true
 
 libdir = File.expand_path('File.dirname(__FILE__)/../lib')
@@ -6,4 +7,4 @@ $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
 require 'word_search'
 
-WordSearch::Application.new(File.read(ARGV.shift)).run
+WordSearch::Application.new(ARGV.shift).run
