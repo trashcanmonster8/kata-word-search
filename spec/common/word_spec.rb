@@ -52,5 +52,10 @@ RSpec.describe WordSearch::Common::Word do
     it '#inspect' do
       expect(subject.inspect).to eq 'ABCD: (0,1),(1,2),(2,3),(3,4)'
     end
+
+    it '#inspect does not add to output after multiple executions' do
+      subject.inspect
+      expect(subject.inspect).to eq 'ABCD: (0,1),(1,2),(2,3),(3,4)'
+    end
   end
 end

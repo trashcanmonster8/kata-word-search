@@ -42,7 +42,7 @@ module WordSearch
       end
 
       def inspect
-        out = @raw
+        out = @raw.dup
 
         if @parse.any?(&:found?)
           out << ': '
