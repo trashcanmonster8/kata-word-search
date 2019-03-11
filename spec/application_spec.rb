@@ -53,4 +53,18 @@ RSpec.describe WordSearch::Application do
     expect { subject.print }.to output("0\n1\n2\n3\n4\n").to_stdout
     subject.print
   end
+
+  context 'real puzzle' do
+    subject { WordSearch::Application.new('file_name.txt') }
+
+    before do
+      allow(File).to receive(:read)
+        .with('file_name.txt')
+        .and_return("#{word_bank}\n#{board}")
+    end
+
+    specify '#prints inspects each solution' do
+      expect { subject.run }.to output(print_solution).to_stdout
+    end
+  end
 end

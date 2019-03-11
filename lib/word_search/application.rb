@@ -28,7 +28,7 @@ module WordSearch
     end
 
     def print
-      puts @solver.solution.join("\n")
+      puts(@solver.solution.map(&:inspect).join("\n"))
     end
   end
 end
