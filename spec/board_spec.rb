@@ -17,6 +17,8 @@ RSpec.describe WordSearch::Board do
     end
   end
 
+  it { is_expected.to eq subject.dup }
+
   it '#rows' do
     expect(subject.rows).to eq EXPECTED_BOARD
   end

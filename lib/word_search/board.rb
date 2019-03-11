@@ -63,6 +63,10 @@ module WordSearch
       direction(padded_matrix.transpose.map(&:compact), direction)
     end
 
+    def ==(other)
+      @board == other.instance_variable_get(:@board)
+    end
+
     private
 
     def direction(lines, reverse = nil)
