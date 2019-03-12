@@ -34,33 +34,11 @@ module WordSearch
     end
 
     def forward_diagonal(direction = nil)
-      # Shamelessly stolen the following resource
-      # https://stackoverflow.com/questions/2506621/ruby-getting-the-diagonal-elements-in-a-2d-array
-      padding = @board.size - 1
-      padded_matrix = []
-
-      @board.each do |row|
-        inverse_padding = @board.size - padding
-        padded_matrix << ([nil] * inverse_padding) + row + ([nil] * padding)
-        padding -= 1
-      end
-
-      direction(padded_matrix.transpose.map(&:compact), direction)
+      diagonal(:each, direction)
     end
 
     def backward_diagonal(direction = nil)
-      # Shamelessly stolen the following resource
-      # https://stackoverflow.com/questions/2506621/ruby-getting-the-diagonal-elements-in-a-2d-array
-      padding = @board.size - 1
-      padded_matrix = []
-
-      @board.reverse_each do |row|
-        inverse_padding = @board.size - padding
-        padded_matrix << ([nil] * inverse_padding) + row + ([nil] * padding)
-        padding -= 1
-      end
-
-      direction(padded_matrix.transpose.map(&:compact), direction)
+      diagonal(:reverse_each, direction)
     end
 
     def ==(other)
@@ -73,6 +51,21 @@ module WordSearch
       return lines unless reverse
 
       lines.collect(&:reverse)
+    end
+
+    def diagonal(order, reverse)
+      # Shamelessly stolen the following resource
+      # https://stackoverflow.com/questions/2506621/ruby-getting-the-diagonal-elements-in-a-2d-array
+      padding = @board.size - 1
+      padded_matrix = []
+
+      @board.send(order) do |row|
+        inverse_padding = @board.size - padding
+        padded_matrix << ([nil] * inverse_padding) + row + ([nil] * padding)
+        padding -= 1
+      end
+
+      direction(padded_matrix.transpose.map(&:compact), reverse)
     end
   end
 end
