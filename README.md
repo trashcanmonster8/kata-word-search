@@ -19,7 +19,7 @@ See [here](https://github.com/PillarTechnology/kata-word-search).
 
 ## Development
 
-Developed on `Ruby v2.5` and may be compatible with `Ruby v2.x`. See [Gemfile](Gemfile) for necessary libraries for development.
+Developed on `Ruby v2.5` and is expecting `ruby ~>2.5`. See [Gemfile](Gemfile).
 
 ### Installation
 
